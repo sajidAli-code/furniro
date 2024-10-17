@@ -1,4 +1,3 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,10 +7,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        mainColor: "#B88E2F",
+        mainColorHover: "#B88A4F",
+        pinkShade: "#FFF3E3"
+      },
+      backgroundImage: {
+        'hero-img': "url('/images/heroBg.png')",
+        'page-route-img': "url('/images/pageRouteBg.jpg')",
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('daisyui'),
+  ],
 };
