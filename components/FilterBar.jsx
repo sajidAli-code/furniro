@@ -1,9 +1,16 @@
 import { HiOutlineAdjustments } from "react-icons/hi";
 import { IoGrid } from "react-icons/io5";
 
-const FilterBar = () => {
+const FilterBar = ({ handleLimit, page, limit, total, scrollRef }) => {
+    // Calculate the current showing range
+    const start = (page - 1) * limit + 1;
+    const end = Math.min(page * limit, total); // Ensure it doesn't go over the total number of products
+
     return (
-        <div className="flex items-center justify-between px-4 py-4 bg-pinkShade">
+        <div
+            className="flex items-center justify-between px-4 py-4 bg-pinkShade"
+            ref={scrollRef}
+        >
             {/* Left side (Filter and View Options) */}
             <div className="flex items-center gap-2">
                 {/* Filter Button */}
@@ -24,7 +31,7 @@ const FilterBar = () => {
 
                 {/* Showing results text */}
                 <p className="text-sm font-semibold text-gray-800">
-                    Showing 1-16 of 32 results
+                    Showing {start}-{end} of {total} results
                 </p>
             </div>
 
@@ -33,10 +40,14 @@ const FilterBar = () => {
                 {/* Show dropdown */}
                 <div className="flex items-center gap-2">
                     <span className="text-sm font-semibold text-gray-800">Show</span>
-                    <select className="px-2 py-2 border border-gray-300 text-sm font-semibold text-gray-600">
-                        <option>16</option>
-                        <option>32</option>
-                        <option>48</option>
+
+                    <select
+                        className="px-2 py-2 border border-gray-300 text-sm font-semibold text-gray-600"
+                        onChange={(e) => handleLimit(Number(e.target.value))} // Convert to number
+                    >
+                        <option value={8}>8</option>
+                        <option value={16}>16</option>
+                        <option value={32}>32</option>
                     </select>
                 </div>
 

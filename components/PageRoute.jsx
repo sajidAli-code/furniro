@@ -1,6 +1,6 @@
 import { MdOutlineNavigateNext } from "react-icons/md";
 
-const PageRoute = () => {
+const PageRoute = ({activePage}) => {
     return (
         <>
             <div className="relative flex flex-col items-center justify-center gap-2 min-h-72 bg-page-route-img bg-cover bg-center text-center">
@@ -9,11 +9,11 @@ const PageRoute = () => {
 
                 {/* Content */}
                 <div className="relative z-10">
-                    <h1 className="text-4xl font-semibold">Shop</h1>
+                    <h1 className="text-4xl font-semibold">{activePage}</h1>
                     <div className="text-base font-medium mt-3 flex flex-row items-center gap-2">
                         <span className="text-gray-800">Home</span>
                         <span className=" text-lg"><MdOutlineNavigateNext /></span>
-                        <span className="text-gray-700">Shop</span>
+                        <span className="text-gray-700">{activePage}</span>
                     </div>
                 </div>
             </div>

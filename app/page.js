@@ -9,7 +9,10 @@ export default function Home() {
     <div>
       <HeroSection />
       <MainCategories />
-      <ProductGrid />
+      <ProductGrid
+        limit={8}
+        title={'Our Products'}
+      />
       <RoomInspiration />
     </div>
   );
